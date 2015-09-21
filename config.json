@@ -1,0 +1,7 @@
+{
+  "logPath": "log-path",
+  "redis": {
+    "host": "",
+    "port": 6379
+  }
+}

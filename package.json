@@ -1,0 +1,23 @@
+{
+  "name": "meep-nginx-tailer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u9520107/meep-nginx-tailer.git"
+  },
+  "author": "Jack Tzu-Chieh Huang <u9520107@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/u9520107/meep-nginx-tailer/issues"
+  },
+  "homepage": "https://github.com/u9520107/meep-nginx-tailer#readme",
+  "dependencies": {
+    "ioredis": "^1.9.0",
+    "tail-forever": "^0.3.11"
+  }
+}
