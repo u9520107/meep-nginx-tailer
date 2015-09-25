@@ -1,6 +1,7 @@
 var Tail = require('tail-forever');
 var Redis = require('ioredis');
 var fs = require('fs');
+var ipRangeCheck = require('ip-range-check');
 
 var localIp = /^10(\.[0-9]*){3}$/;
 var isIp = /^[0-9]*(\.[0-9]*){3}$/;
@@ -13,7 +14,7 @@ var config = require('./config.json');
 
 var r = new Redis(config.redis);
 
-var whitelist = new Set();
+var whitelist = [];
 var urlfilter = [];
 var uafilter = [];
 
@@ -57,7 +58,7 @@ function settingChecker() {
 
           r.smembers(config.whitelist).then(function (wl) {
             //console.log('@wl', wl);
-            whitelist = new Set(wl);
+            whitelist = wl;
             timestamps.whitelist = newWhitelistTime;
             isUpdatingWL = false;
           }).catch(function (err) {
@@ -149,10 +150,10 @@ function processLine(data) {
   if(isIp.test(ip)) {
     //check for local ip and whitelist ips
     if('127.0.0.1' ===ip ||
-       whitelist.has(ip) ||
          localIp.test(ip) ||
            i192IP.test(ip) ||
-             i172IP.test(ip)) {
+             i172IP.test(ip) ||
+       checkWhiteList(ip)) {
       return;
     }
 
@@ -189,3 +190,11 @@ function checkUa(ua) {
   return false;
 }
 
+function checkWhiteList(ip) {
+  for(var i = 0, len = whitelist.length; i < len; i++) {
+    if(ipRangeCheck(ip, whitelist[i])) {
+      return true;
+    }
+  }
+  return false;
+}

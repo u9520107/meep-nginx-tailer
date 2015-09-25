@@ -18,6 +18,7 @@
   "homepage": "https://github.com/u9520107/meep-nginx-tailer#readme",
   "dependencies": {
     "ioredis": "^1.9.0",
+    "ip-range-check": "0.0.1",
     "tail-forever": "^0.3.11"
   }
 }
