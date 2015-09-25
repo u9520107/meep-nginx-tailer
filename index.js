@@ -157,8 +157,13 @@ function processLine(data) {
     }
 
     //check for offenders
+<<<<<<< HEAD
     if(status === '444' ||
        checkUrl(data.http_referrer) ||
+=======
+    if(status === '499' ||
+       checkUrl(data.request) ||
+>>>>>>> upstream/master
        checkUa(data.http_user_agent)
       ) {
       r.zincrby(config.ban, 0, ip).catch(console.log);
@@ -168,7 +173,8 @@ function processLine(data) {
   }
 }
 
-function checkUrl(url) {
+function checkUrl(request) {
+  var url = request.split(' ')[1];
   for(var i = 0, len = urlfilter.length; i < len; i++) {
     if(url.indexOf(urlfilter[i]) > -1) {
       return true;
