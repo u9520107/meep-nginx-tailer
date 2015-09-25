@@ -157,7 +157,7 @@ function processLine(data) {
     }
 
     //check for offenders
-    if(status === '499' ||
+    if(status === '444' ||
        checkUrl(data.request) ||
        checkUa(data.http_user_agent)
       ) {
