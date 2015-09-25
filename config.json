@@ -3,5 +3,12 @@
   "redis": {
     "host": "",
     "port": 6379
-  }
+  },
+  "whitelist": "iptables-whitelist",
+  "whitelistTime": "iptables-whitelist-time",
+  "urlfilter": "iptables-urlfilter",
+  "urlfilterTime": "iptables-urlfilter-time",
+  "uafilter": "iptables-uafilter",
+  "uafilterTime": "iptables-uafilter-time",
+  "ban": "iptables-ban"
 }
